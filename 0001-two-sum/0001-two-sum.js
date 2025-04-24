@@ -4,12 +4,14 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-            let N = nums.length;
+        let N = nums.length;
+        let obj = {};
         for(let i = 0; i < N; i++) {
-            for(let j = i; j < N - 1; j++) {
-                if (nums[i] + nums[j + 1] === target) {
-                    return [i, j + 1];
-                }
+            let num = nums[i];
+            let reverse = target - num;
+            if (obj[num] !== undefined) {
+                return [obj[num], i];
             }
+            obj[reverse] = i;
         }
 };
